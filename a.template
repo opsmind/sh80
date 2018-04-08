@@ -1,0 +1,2 @@
+python /root/notify/vms.py '{{if .active}}{{range $i,$x := .receiver }}{{if $x.phone}}{{print $x.phone}}{{print ","}}{{end}}{{end}}{{end}}'
+python /root/notify/sms.py '{{range $i,$x := .receiver }}{{if $x.phone}}{{print $x.phone}}{{print ","}}{{end}}{{end}}' '{"host":"{{.tags.host}}","trigger":"[OpsMind]{{.title}}","status":"{{print .active}}","value":"{{print .value}}"}'
